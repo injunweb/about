@@ -3,7 +3,6 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="icon" type="image/svg+xml" href="/logo.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>injunweb</title>
   <style>
@@ -147,24 +146,32 @@
     }
 
     @keyframes float {
-      0%, 100% {
+
+      0%,
+      100% {
         transform: translate(0, 0);
       }
+
       25% {
         transform: translate(100px, 100px);
       }
+
       50% {
         transform: translate(0, 200px);
       }
+
       75% {
         transform: translate(-100px, 100px);
       }
     }
 
     @keyframes pulse {
-      0%, 100% {
+
+      0%,
+      100% {
         transform: scale(1);
       }
+
       50% {
         transform: scale(1.1);
       }
@@ -175,6 +182,7 @@
         opacity: 0;
         transform: translateY(30px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
@@ -185,6 +193,7 @@
       .hero h2 {
         font-size: 2.5rem;
       }
+
       .hero p {
         font-size: 1.2rem;
       }
