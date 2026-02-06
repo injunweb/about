@@ -4,180 +4,197 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>injunweb</title>
+  <title>INJUNWEB - Private Cloud Infrastructure</title>
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.min.css" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap');
-
-    :root {
-      --primary: #1e90ff;
-      --gradient: linear-gradient(135deg, #1e90ff, #ff007f);
-      --dark: #0a0a0a;
-    }
-
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    body {
-      font-family: 'Noto Sans KR', sans-serif;
-      background-color: var(--dark);
-      color: white;
-      line-height: 1.6;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+    :root {
+      --black: #000000;
+      --white: #ffffff;
+      --gray: #666666;
+      --light-gray: #f5f5f5;
+      --border: #e0e0e0;
     }
 
-    header {
+    body {
+      font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+      background: var(--white);
+      color: var(--black);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar {
+      display: none;
+    }
+
+    html {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+      scroll-behavior: smooth;
+    }
+
+    .header {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
-      background-color: #000;
-      padding: 10px 20px;
-      display: flex;
-      align-items: center;
-      color: white;
-      border-bottom: 1px solid #333;
+      height: 70px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
       z-index: 1000;
-    }
-
-    .logo-link {
       display: flex;
       align-items: center;
-      text-decoration: none;
-      color: white;
+      padding: 0 4rem;
     }
 
-    .logo-img {
-      height: 40px;
-      margin-right: 5px;
-      animation: pulse 2s infinite;
-    }
-
-    .logo-title {
-      font-size: 24px;
-      margin: 0;
-      color: white;
-      text-decoration: none;
-    }
-
-    main {
-      flex: 1;
-      padding-top: 60px;
-    }
-
-    .hero {
-      min-height: calc(100vh - 60px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 2rem;
-      background: radial-gradient(circle at center, rgba(30, 144, 255, 0.1) 0%, transparent 70%);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-content {
-      max-width: 800px;
-      z-index: 1;
-    }
-
-    .hero h2 {
-      font-size: 3.5rem;
-      margin-bottom: 1.5rem;
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      animation: slideUp 1s ease-out;
-    }
-
-    .hero p {
-      font-size: 1.5rem;
-      margin-bottom: 2rem;
-      animation: slideUp 1s ease-out 0.3s backwards;
-    }
-
-    .cta-button {
-      display: inline-block;
-      padding: 1rem 2.5rem;
+    .logo {
       font-size: 1.2rem;
-      background: var(--gradient);
-      color: white;
+      font-weight: 700;
+      color: var(--black);
       text-decoration: none;
-      border-radius: 30px;
-      transition: transform 0.3s, box-shadow 0.3s;
-      animation: slideUp 1s ease-out 0.6s backwards;
     }
 
-    .cta-button:hover {
+    .floating-social {
+      position: fixed;
+      left: 2rem;
+      bottom: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      z-index: 100;
+      animation: fadeIn 1s ease 1s forwards;
+      opacity: 0;
+    }
+
+    .floating-social::after {
+      content: '';
+      width: 1px;
+      height: 90px;
+      background: var(--border);
+    }
+
+    .floating-social a {
+      color: var(--gray);
+      font-size: 1.2rem;
+      transition: all 0.3s;
+    }
+
+    .floating-social a:hover {
+      color: var(--black);
       transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(30, 144, 255, 0.3);
     }
 
-    .floating-elements {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      overflow: hidden;
+    .floating-email {
+      position: fixed;
+      right: 2rem;
+      bottom: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      z-index: 100;
+      animation: fadeIn 1s ease 1s forwards;
+      opacity: 0;
     }
 
-    .floating-element {
-      position: absolute;
-      background: var(--gradient);
-      border-radius: 50%;
-      opacity: 0.1;
-      animation: float 20s infinite;
+    .floating-email::after {
+      content: '';
+      width: 1px;
+      height: 90px;
+      background: var(--border);
     }
 
-    footer {
-      background-color: #000;
-      padding: 5px 0;
-      text-align: center;
-      color: white;
-      border-top: 1px solid #333;
+    .floating-email a {
+      writing-mode: vertical-rl;
+      color: var(--gray);
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      transition: all 0.3s;
     }
 
-    @keyframes float {
-
-      0%,
-      100% {
-        transform: translate(0, 0);
-      }
-
-      25% {
-        transform: translate(100px, 100px);
-      }
-
-      50% {
-        transform: translate(0, 200px);
-      }
-
-      75% {
-        transform: translate(-100px, 100px);
-      }
+    .floating-email a:hover {
+      color: var(--black);
+      transform: translateY(-3px);
     }
 
-    @keyframes pulse {
-
-      0%,
-      100% {
-        transform: scale(1);
-      }
-
-      50% {
-        transform: scale(1.1);
-      }
+    .main-content {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 70px 2rem 0;
     }
 
-    @keyframes slideUp {
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 90px;
+      padding-bottom: 100px;
+    }
+
+    .hero-greeting {
+      font-size: 1rem;
+      color: var(--gray);
+      margin-bottom: 2rem;
+      animation: fadeInUp 0.6s ease forwards;
+    }
+
+    .hero-title {
+      font-size: 4rem;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      animation: fadeInUp 0.6s ease 0.2s forwards;
+      opacity: 0;
+    }
+
+    .hero-subtitle {
+      font-size: 2rem;
+      color: var(--gray);
+      margin-bottom: 2rem;
+      animation: fadeInUp 0.6s ease 0.4s forwards;
+      opacity: 0;
+    }
+
+    .hero-description {
+      max-width: 600px;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--gray);
+      margin-bottom: 3rem;
+      animation: fadeInUp 0.6s ease 0.6s forwards;
+      opacity: 0;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      padding: 1rem 2rem;
+      border: 1px solid var(--black);
+      color: var(--black);
+      text-decoration: none;
+      font-size: 1rem;
+      transition: all 0.3s;
+      animation: fadeInUp 0.6s ease 0.8s forwards;
+      opacity: 0;
+    }
+
+    .hero-cta:hover {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    @keyframes fadeInUp {
       from {
         opacity: 0;
         transform: translateY(30px);
@@ -189,50 +206,82 @@
       }
     }
 
-    @media (max-width: 768px) {
-      .hero h2 {
-        font-size: 2.5rem;
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
       }
 
-      .hero p {
-        font-size: 1.2rem;
+      to {
+        opacity: 1;
       }
     }
 
-    @media (max-width: 600px) {
-      header {
-        padding: 10px 10px;
+    @media (max-width: 768px) {
+      .header {
+        padding: 0 1rem;
+      }
+
+      .logo {
+        font-size: 1rem;
+      }
+
+      .main-content {
+        padding: 70px 1.5rem 0;
+      }
+
+      #hero {
+        padding-top: 120px;
+        padding-bottom: 80px;
+        min-height: 100vh;
+      }
+
+      .hero-title {
+        font-size: 2.5rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1.5rem;
+      }
+
+      .floating-social,
+      .floating-email {
+        display: none;
       }
     }
   </style>
 </head>
 
 <body>
-  <header>
-    <a href="#" class="logo-link">
-      <img src="logo.svg" alt="injunweb Logo" class="logo-img">
-      <h1 class="logo-title">injunweb</h1>
-    </a>
+  <header class="header">
+    <a href="#hero" class="logo">INJUNWEB</a>
   </header>
 
-  <main>
-    <section class="hero">
-      <div class="floating-elements">
-        <div class="floating-element" style="width: 300px; height: 300px; top: 10%; left: 10%;"></div>
-        <div class="floating-element" style="width: 200px; height: 200px; top: 60%; left: 70%;"></div>
-        <div class="floating-element" style="width: 150px; height: 150px; top: 30%; left: 80%;"></div>
-      </div>
-      <div class="hero-content">
-        <h2>안녕하세요,<br>개발자 injun입니다</h2>
-        <p>웹 개발과 새로운 기술에 대한 열정을 가지고 있습니다</p>
-        <a href="https://github.com/injunweb" class="cta-button">GitHub 방문하기</a>
-      </div>
+  <div class="floating-social">
+    <a href="https://github.com/injunweb" target="_blank" aria-label="GitHub">
+      <i class="ri-github-fill"></i>
+    </a>
+    <a href="https://blog.injun.dev" target="_blank" aria-label="Blog">
+      <i class="ri-article-line"></i>
+    </a>
+  </div>
+
+  <div class="floating-email">
+    <a href="mailto:me@injun.dev">me@injun.dev</a>
+  </div>
+
+  <main class="main-content">
+    <section id="hero">
+      <p class="hero-greeting">Private Cloud Infrastructure Project</p>
+      <h1 class="hero-title">INJUNWEB</h1>
+      <h2 class="hero-subtitle">Dell 서버 3대로 구축한<br>프라이빗 클라우드 인프라</h2>
+      <p class="hero-description">
+        Proxmox 가상화 위에서 Talos Linux 기반 Kubernetes 클러스터를 운영하며,
+        Ceph 분산 스토리지를 통해 고가용성 인프라를 구축하고 있습니다.
+        DevOps와 인프라 엔지니어링 역량을 실험하고 검증하는 홈랩입니다.
+      </p>
+      <a href="https://github.com/injunweb" target="_blank" class="hero-cta">GitHub 방문하기</a>
     </section>
   </main>
-
-  <footer>
-    &copy; 2024 injunweb. All rights reserved.
-  </footer>
 </body>
 
 </html>
